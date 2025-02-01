@@ -224,7 +224,7 @@ public class Server
                 var budget = int.Parse(action[2]);
                 var itemsBought = int.Parse(action[3]);
 
-                _inventory.CalculateAssets(client, currentUser, budget, itemsBought);
+                _inventory.CalculateAssets(client, budget, itemsBought);
                 _finishedPlayers.Add(currentUser);
                 break;
             default:
