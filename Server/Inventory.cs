@@ -164,7 +164,7 @@ public class Inventory
         stream.Write(write, 0, write.Length);
     }
 
-    public void CalculateAssets(TcpClient client, string username, int budget, int itemsBought)
+    public void CalculateAssets(TcpClient client, int budget, int itemsBought)
     {
         var currentUser = CheckPlayer(client);
 
@@ -174,8 +174,11 @@ public class Inventory
         // calculating player assets
         var assets = budget + itemsBought * 10 * 7;
 
-        if (budget >= 40 || budget <= 0)
+        if (budget >= 40)
             assets = 0;
+
+        if (budget <= 0)
+            assets -= 20;
 
         Players.PlayersScores[currentUser] = assets;
     }
